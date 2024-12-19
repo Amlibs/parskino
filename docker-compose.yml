@@ -1,0 +1,12 @@
+version: '3.9'
+
+services:
+  flask_app:
+    container_name: flask_ap212121
+    build: ./app
+    ports:
+      - "5000:5000"
+    environment:
+      - PYTHONUNBUFFERED=1
+    #volumes:
+    #  - .:/spp
