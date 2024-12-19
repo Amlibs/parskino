@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Самое посещаемое кино</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      background-color: #f4f4f9;
+    }
+    table {
+      font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+      text-align: left;
+      border-collapse: separate;
+      border-spacing: 5px;
+      background: #ECE9E0;
+      color: #656665;
+      border: 16px solid #ECE9E0;
+      border-radius: 20px;
+    }
+    th {
+      font-size: 18px;
+      padding: 10px;
+    }
+    td {
+      background: #F5D7BF;
+      padding: 10px;
+    }
+    tbody tr:first-child td {
+      font-size: 24px;
+      color: #000;
+      background: #FFDAB9;
+    }
+    .note{
+      font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+      font-size: 24px;
+      color: #555;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .button-container {
+      margin-top: 20px;
+    }
+    button{
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #FFDAB9;
+      color: #555;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #d4b69b;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <p class="note"> Самый посещаемый фильм (в %) на данный момент выделен первым</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Название</th>
+          <th>Кол-во мест всего</th>
+          <th>Кол-во занятых мест</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for film in films %}
+        <tr>
+          <td>{{film[0]}}</td>
+          <td>{{film[1]}}</td>
+          <td>{{film[2]}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  <div class="button-container">
+    <form action="/update-data" method="POST">
+      <button type="submit">Обновить данные</button>
+    </form>
+  </div>
+  {% if parserio %}
+  <p>Сайт парсится (это может занять много времени ~5 минут)</p>
+  {% endif %}
+  </div>
+</body>
+</html>
